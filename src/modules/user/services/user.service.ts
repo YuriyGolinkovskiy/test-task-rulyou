@@ -18,16 +18,14 @@ export class UserService {
         dto.efficiency,
       );
     } catch (error) {
-      this.logger.error(error);
       throw error;
     }
   }
 
-  async getUsers(): Promise<User[]> {
+  async getUsers(role?: string): Promise<User[]> {
     try {
-      return await this.userRepository.findAll();
+      return await this.userRepository.findAll(role);
     } catch (error) {
-      this.logger.error(error);
       throw error;
     }
   }
@@ -36,7 +34,6 @@ export class UserService {
     try {
       return await this.userRepository.findById(id);
     } catch (error) {
-      this.logger.error(error);
       throw error;
     }
   }
@@ -49,7 +46,6 @@ export class UserService {
         dto.role,
       );
     } catch (error) {
-      this.logger.error(error);
       throw error;
     }
   }
@@ -58,7 +54,6 @@ export class UserService {
     try {
       await this.userRepository.deleteUsers();
     } catch (error) {
-      this.logger.error(error);
       throw error;
     }
   }
@@ -67,7 +62,6 @@ export class UserService {
     try {
       return await this.userRepository.deleteUserById(id);
     } catch (error) {
-      this.logger.error(error);
       throw error;
     }
   }

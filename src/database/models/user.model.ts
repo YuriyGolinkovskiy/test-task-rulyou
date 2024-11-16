@@ -5,7 +5,7 @@ import {
 } from 'sequelize';
 import { Column, DataType, Model, Table } from 'sequelize-typescript';
 
-@Table({ tableName: 'user', underscored: true, timestamps: true })
+@Table({ tableName: 'user', underscored: true, timestamps: false })
 export class User extends Model<
   InferAttributes<User>,
   InferCreationAttributes<User>

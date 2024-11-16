@@ -6,6 +6,7 @@ import {
   Param,
   Patch,
   Delete,
+  Query,
 } from '@nestjs/common';
 import { CreateUserDto } from '../dto/create-user.dto';
 import { UserService } from '../services/user.service';
@@ -40,9 +41,11 @@ export class UserController {
   }
 
   @Get('get')
-  async getUser(): Promise<IUserGetResponse | IFailedResponse> {
+  async getUser(
+    @Query('role') role?: string,
+  ): Promise<IUserGetResponse | IFailedResponse> {
     try {
-      const user = await this.userService.getUsers();
+      const user = await this.userService.getUsers(role);
       return {
         success: true,
         result: { users: user },

@@ -41,11 +41,18 @@ export class UserRepository {
     return user;
   }
 
-  async findAll(): Promise<User[]> {
-    const users = await this.userModel.findAll();
-
+  async findAll(role?: string): Promise<User[]> {
+    if (!role) {
+      const users = await this.userModel.findAll();
+      return users;
+    }
+    const users = await this.userModel.findAll({
+      where: {
+        role: role,
+      },
+    });
     if (!users) {
-      throw new NotFoundException(`Users not found`);
+      throw new NotFoundException(`Users with role ${role} not found`);
     }
 
     return users;
