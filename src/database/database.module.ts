@@ -19,7 +19,7 @@ import { User } from './models/user.model';
         models: [User],
         logging: false,
         autoLoadModels: true,
-        synchronize: false,
+        synchronize: true,
       }),
 
       inject: [ConfigService],

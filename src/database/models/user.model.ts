@@ -16,7 +16,7 @@ export class User extends Model<
     primaryKey: true,
     autoIncrement: true,
   })
-  id: CreationOptional<string>;
+  id: CreationOptional<number>;
 
   @Column({
     type: DataType.STRING,
